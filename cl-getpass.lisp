@@ -64,7 +64,8 @@
   (values))
 
 (defun getpass (&optional (prompt "Enter password: ") (stream *standard-input*))
-  #+(or abcl clasp clisp ufasoft-lisp cormanlisp gcl wcl lispworks mkcl poplog scl xcl swank) (error "Right now I only support a few impls :(")
+  #+swank(format *error-output* "WARNING: cl-readpass can't (yet) hide input from SLIME streams!!!~%")
+  #+(or abcl clasp clisp ufasoft-lisp cormanlisp gcl wcl lispworks mkcl poplog scl xcl) (error "Right now I only support a few impls :(")
   (format stream "~a" prompt)
   (let (secret)
     (unwind-protect
