@@ -71,7 +71,6 @@
     (unwind-protect
          (prog2
              (echo-off stream)
-             (setf secret (read-line stream))
-           (echo-on stream))
+             (setf secret (read-line stream)))
       (echo-on stream))
     secret))
